@@ -8,6 +8,17 @@ class LinearRegression:
 
     This class provides an implementation of the basic Linear Regression
     algorithm.
+
+    Example usage:
+    >>> X = np.array([[1], [2], [3]])
+    >>> Y = np.array([[3], [4], [5]])
+    >>> lr = LinearRegression()
+    >>> lr.fit(X, Y)
+    >>> predictions = lr.predict(X)
+    >>> print(predictions)
+    [[ 3.]
+     [ 4.]
+     [ 5.]]
     """
 
     def __init__(self) -> None:
