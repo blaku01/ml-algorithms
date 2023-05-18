@@ -93,6 +93,32 @@ class LinearRegression:
         plt.show()
 
 
+class LinearRegressionL2(LinearRegression):
+    def __init__(self, alpha=1):
+        super().__init__()
+        self.alpha = alpha
+
+    def fit(self, X: np.ndarray, Y: np.ndarray) -> np.ndarray:
+        """Fit the linear regression model to the given training data.
+
+        Parameters:
+        - X (np.ndarray, shape (n, m)): The input features matrix, where n is the number of samples and m is the number of features.
+        - Y (np.ndarray, shape (n, 1)): The target values.
+
+        Note: The input features matrix X should have a shape of (n, m), where n is the number of samples and m is the number of features.
+        The target values Y should have a shape of (n, 1).
+
+        The difference between LinearRegression and LinearRegressionL2 is that LinearRegressionL2 applies L2 normalization.
+
+        Returns:
+        - self (np.ndarray, shape (1, m)): Returns an instance of the LinearRegression class.
+        """
+        X_ext = self.add_constant(X)
+        self.a = Y.T @ X_ext @ np.linalg.inv(X_ext.T @ X_ext + self.alpha)
+        return self.a
+
+
+    
 if __name__ == '__main__':
     lr = LinearRegression()
     size = 20
